@@ -92,26 +92,3 @@ class TextReplacerClass { // Changed class name to avoid conflict with filename
         }
     }
 }
-
-// Main block to run the class using command-line arguments
-
-/* remove commented code AND change file name, class name and 
-   constructor name from TextReplacerClass to TextReplacer 
-   to run this using terminal (aka cmd) 
-*/
-
-/* if (args.length < 3) {
-    println "Usage: groovy TextReplacer.groovy <directoryPath> <searchText> <replaceText> [<logFilePath>]"
-    System.exit(1)
-}
-
-def directoryPath = args[0]
-def searchText = args[1]
-def replaceText = args[2]
-def logFilePath = args.length > 3 ? args[3] : null
-
-println "Creating TextReplacer instance..."
-TextReplacer replacer = new TextReplacer(directoryPath, searchText, replaceText, logFilePath)
-println "Processing files..."
-replacer.processFiles()
-println "Program finished." */
