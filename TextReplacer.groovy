@@ -25,26 +25,29 @@ class TextReplacer {
         if (!dir.exists()) {
             println "Directory does not exist. Please check path and try again."
             return
-        }
+    }
 
         dir.eachFileRecurse(FileType.FILES) { File file ->
             if (file.text.contains(searchText)) {
-                replaceTextInFile(file)
+            replaceTextInFile(file)
             }
         }
     }
 
     // Function to replace text in a file
+    // with error handling and logging
     void replaceTextInFile(File file) {
         println "Processing file: ${file.path}"
 
         try {
+            // Read file contents line by line
             def content = file.text
             def lines = file.readLines()
             int occurrences = 0
             def locations = []
 
-            lines.eachWithIndex { line, index ->
+            // Find occurrences of 'searchText' and respective line numbers
+            lines.eachWithIndex { line, index -> 
                 if (line.contains(searchText)) {
                     occurrences += line.count(searchText)
                     locations << "Line ${index + 1}: ${line}"
@@ -52,29 +55,44 @@ class TextReplacer {
             }
 
             if (occurrences > 0) {
+                // Replace all occurrences of 'searchText' with 'replaceText'
                 content = content.replaceAll(searchText, replaceText)
+
+                // Create backup of original file
                 createBackup(file)
+
+                // Write updated content to the file
                 file.text = content
+
+                // Log the number of replacements and where patterns were found
                 if (logFilePath) {
                     logModifiedFile(file.path, occurrences, locations)
                 }
             }
         } catch (Exception e) {
+            // Handle exceptions that occur while processing file
             println "Error processing file: ${file.path}. ${e.message}"
+
+            // Log error message if logging is enabled
             if (logFilePath) {
                 logModifiedFile(file.path, 0, [], true, e.message)
             }
         }
     }
 
+    // Function to create a backup of the original file
     void createBackup(File file) {
         File backup = new File(file.path + ".bak")
         backup.text = file.text
     }
 
     // Function to log modified files and errors
+<<<<<<< HEAD
     void logModifiedFile(String filePath, int replacements, List<String> locations, boolean isError = false, String errorMessage = "") {
 
+=======
+    void logModifiedFile(String filePath, int replacements, boolean isError = false, String errorMessage = "") {
+>>>>>>> parent of 64da4a1 (Re-added main method for command-line execution)
         // Define log file and get current time in readable format
         File logFile = new File(logFilePath)
         def currentTime = new Date().format("dd-MM-yyyy HH:mm:ss")
@@ -84,23 +102,16 @@ class TextReplacer {
             logFile << "[${currentTime}] ERROR: Failed to process file: ${filePath}. Reason: ${errorMessage}\n"
         } else {
             //Log successful modifications with number of replacements
+<<<<<<< HEAD
             logFile << "[${currentTime}] SUCCESS: Modified file: ${filePath}. Replaced ${replacements} occurrence(s) of '${searchText}' at ${locations.join(", ")}\n"   
+=======
+            logFile << "[${currentTime}] SUCCESS: Modified file: ${filePath}. Replaced ${replacements} occurrence(s) of '${searchText}'\n"   
+>>>>>>> parent of 64da4a1 (Re-added main method for command-line execution)
         }
-    }
-
-    // Add a main method for command-line execution
-    static void main(String[] args) {
-        if (args.length < 3) {
-            println "Usage: groovy TextReplacer.groovy <directory> <searchText> <replaceText> [logFile]"
-            return
-        }
-
-        String directoryPath = args[0]
-        String searchText = args[1]
-        String replaceText = args[2]
-        String logFilePath = args.length > 3 ? args[3] : null
-
-        TextReplacer replacer = new TextReplacer(directoryPath, searchText, replaceText, logFilePath)
-        replacer.processFiles()
     }
 }
+
+
+
+
+
