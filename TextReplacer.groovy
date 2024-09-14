@@ -22,7 +22,7 @@ class TextReplacer {
     void processFiles(){
         File dir = new File(directoryPath)
         if (!dir.exists()) {
-            println "Directory does not exists. Please check path and try again."
+            println "Directory does not exist. Please check path and try again."
             return
     }
 
@@ -75,7 +75,7 @@ class TextReplacer {
 
             // Log error message if logging is enabled
             if (logFilePath) {
-                logModifiedFile(file.path, 0, true, e.message)
+                logModifiedFile(file.path, 0, [], true, e.message)
             }
         }
     }
