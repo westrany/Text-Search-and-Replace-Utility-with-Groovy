@@ -1,5 +1,20 @@
 # Text-Search-and-Replace-Utility-with-Groovy  
 
+## Index  
+
+- [Overview](#overview)  
+- [Features](#features)  
+- [Requirements](#requirements)  
+- [How to Use](#how-to-use)  
+  - [The Easy Way: Running with UI](#the-easy-way-running-with-ui)  
+  - [The Not-So-Easy Way: Running with Terminal/CMD](#the-not-so-easy-way-running-with-terminalcmd)  
+- [Program Flow](#program-flow)  
+- [Algorithm Choice](#algorithm-choice)  
+- [Logging and Error Handling](#logging-and-error-handling)  
+- [Project Structure](#project-structure)  
+- [Development Time](#development-time)  
+- [License](#license)  
+
 ## Overview  
 
 This project is a Groovy-based text search and replace utility that processes all text files in a given directory and its subdirectories. The program searches for a specific text or pattern and replaces it with a new string as specified by the user. Additionally, it offers options for logging, backup creation, and a simple user interface for ease of use.  
