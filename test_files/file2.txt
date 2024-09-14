@@ -1,0 +1,2 @@
+Another file with some text to replace. Let's see how it works.
+More lines of text here.
