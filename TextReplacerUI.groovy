@@ -106,46 +106,43 @@ class TextReplacerUI {
         frame.add(runButton, gbc)
 
         // Action listener for the button
-        runButton.addActionListener({ e ->
-            @Override
-            void actionPerformed(ActionEvent e) {
-                String directory = dirField.getText()
-                String originalText = originalTextField.getText()
-                String newText = newTextField.getText()
-                String logFile = logFileField.getText()
+        runButton.addActionListener { e ->
+            String directory = dirField.getText()
+            String originalText = originalTextField.getText()
+            String newText = newTextField.getText()
+            String logFile = logFileField.getText()
 
-                // Validate inputs
-                if (directory.isEmpty() || originalText.isEmpty() || newText.isEmpty()) {
-                    JOptionPane.showMessageDialog(frame, "Please fill out all required fields.", "Error", JOptionPane.ERROR_MESSAGE)
-                    return
-                }
-
-                //Check if the directory exists
-                File dir = new File(directory)
-                if (!dir.exists() || !dir.isDirectory()) {
-                    JOptionPane.showMessageDialog(frame, "Directory does not exist. Please check the path and try again.", "Error", JOptionPane.ERROR_MESSAGE)
-                    return
-                }
-
-                //Check if log file path is valid (if provided)
-                if (|logFile.isEmpty()) {
-                    File logFileObj = new File(logFile)
-                    File logDir = logFileObj.getParentFile()
-
-                    if (logDir != null && (!logDir.exists() || !logDir.isDirectory())) {
-                        JOptionPane.showMessageDialog(frame, "Log File Path is invalid. Please check the path and try again.", "Error", JOptionPane.ERROR_MESSAGE)
-                        return
-                    }
-                }
-
-                // Create TextReplacerClass instance and start processing
-                TextReplacerClass replacer = new TextReplacerClass(directory, originalText, newText, logFile)
-                replacer.processFiles()
-
-                JOptionPane.showMessageDialog(frame, "Text replacement completed.", "Success", JOptionPane.INFORMATION_MESSAGE)
+            // Validate inputs
+            if (directory.isEmpty() || originalText.isEmpty() || newText.isEmpty()) {
+            JOptionPane.showMessageDialog(frame, "Please fill out all required fields.", "Error", JOptionPane.ERROR_MESSAGE)
+            return
             }
-        })
-        
+
+            // Check if the directory exists
+            File dir = new File(directory)
+            if (!dir.exists() || !dir.isDirectory()) {
+                JOptionPane.showMessageDialog(frame, "Directory does not exist. Please check the path and try again.", "Error", JOptionPane.ERROR_MESSAGE)
+                return
+            }
+
+            // Check if log file path is valid (if provided)
+            if (!logFile.isEmpty()) {
+                File logFileObj = new File(logFile)
+                File logDir = logFileObj.getParentFile()
+
+                if (logDir != null && (!logDir.exists() || !logDir.isDirectory())) {
+                    JOptionPane.showMessageDialog(frame, "Optional Log File directory is invalid. Please check the path and try again.", "Error", JOptionPane.ERROR_MESSAGE)
+                    return
+                }
+            }
+
+            // Create TextReplacerClass instance and start processing
+            TextReplacerClass replacer = new TextReplacerClass(directory, originalText, newText, logFile)
+            replacer.processFiles()
+
+            JOptionPane.showMessageDialog(frame, "Text replacement completed.", "Success", JOptionPane.INFORMATION_MESSAGE)
+        }       
+
         // Display the frame
         frame.setVisible(true)
     }
