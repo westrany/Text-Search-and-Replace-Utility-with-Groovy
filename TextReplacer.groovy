@@ -12,7 +12,7 @@ class TextReplacer { // Changed class name to avoid conflict with filename
     String logFilePath
 
     // Constructor
-    FileTextReplacer(String directoryPath, String searchText, String replaceText, String logFilePath = null) {
+    TextReplacer(String directoryPath, String searchText, String replaceText, String logFilePath = null) {
         this.directoryPath = directoryPath
         this.searchText = searchText
         this.replaceText = replaceText
@@ -104,8 +104,8 @@ def searchText = args[1]
 def replaceText = args[2]
 def logFilePath = args.length > 3 ? args[3] : null
 
-println "Creating FileTextReplacer instance..."
-FileTextReplacer replacer = new FileTextReplacer(directoryPath, searchText, replaceText, logFilePath)
+println "Creating TextReplacer instance..."
+TextReplacer replacer = new TextReplacer(directoryPath, searchText, replaceText, logFilePath)
 println "Processing files..."
 replacer.processFiles()
 println "Program finished."
