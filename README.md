@@ -49,9 +49,48 @@ And here's how to fill the 4 fields that show up:
 - **New Text:** write whatever you want the ``` Original Text ``` to be replaced with.     
 - **Optional Log File:** this very much optional field can be used if you want to create and save a log file for this specific run of the program. You can just type what you wish to call said file (e.g.: ``` log_1.txt ```).
   
-    - Alternatively: you can type the entire directory if you want it saved somewhere else other than the directory for this repository on your machine (e.g.: ``` C:\User\Documents\log_1.txt ```). **Just make sure to include a name for the file!** Otherwise you will be met with a very lovely error message... 
+    - Alternatively: you can type the entire directory if you want it saved somewhere else other than the directory for this repository on your machine (e.g.: ``` C:\User\Documents\log_1.txt ```). **Just make sure to include a name for the file!** Otherwise you will be met with a very lovely error message...
+    - Whatever you don't, **don't place the files you want the program to make changes to on the main directory of this repository!** Otherwise the program will change everything that is not inside a zip file - yes, including other code files. And this will mess up a bunch of things and give you a headache, so just take my word for it and put those files on another folder (I left you a pretty empty folder ``` test_files ``` specifically for that) or to another folder somewhere in your machine.
 
 ### The Not-So-Easy Way: Running with Terminal/CMD
 
-_If you really must... Go for it!_ Just remember to firstly open ``` TextReplacerClass.groovy ```, scroll all the way down to line 96, and don't panic!
-1. 
+To do this, you need to use a copy of TextReplacerClass that contains a main block to run the class using command-line arguments. _I initially had this main block commented out on ``` TextReplacerClass.groovy ``` but decided to make a copy of the file with it specifically for terminal use for conveniency of the user. The code is exactly the same in these two, the only difference is the main block added on lines 96 to 112 of ``` TERMINAL_TextReplacerClass.groovy ```._  
+
+1. Open your terminal/cmd in the main folder of this repository (in my case that would be ``` C:\Users\maria\Documents\GitHub\Text-Search-and-Replace-Utility-with-Groovy ```).
+
+2. Type the following command changing the necessary sections to fit your local path and what you want the program to do:  
+
+``` groovy TERMINAL_TextReplacerClass.groovy \path\to\directory "Original Text" "New Text" "\path\to\logfile.txt" ```
+
+A brief explanation of what each of the 4 parameters do can be found in the description of [The Easy Way: Running with UI](#the-easy-way-running-with-ui). **I strongly recommend you reaad it.**   
+
+## Program Flow  
+
+1. The program receives the directory path, search text, and replacement text as input.
+
+2. It recursively traverses the directory and subdirectories, looking for text files.
+
+3. For each file, it searches for the specified text/pattern.
+
+4. If found, the program replaces the text and creates a backup of the original file.
+
+5. The log file (if provided) records details of all modified files.
+
+## Algorithm Choice  
+
+The search and replace operation leverages Groovy's powerful string manipulation and file handling capabilities. By reading each file as a text stream and processing it line by line, the program efficiently handles both small and large files. The use of recursion allows for easy navigation through subdirectories. This design ensures that the utility is lightweight, flexible, and scalable for various directory structures.
+
+## Project Structure  
+
+- **TextReplacerClass.groovy:** core logic for search, replace, and logging
+- **TextRepalcerUI.groovy:** simple user interface to run the utility
+- **TERMINAL_TextReplacerClass:** modified TextReplacerClass.groovy with a main block that lets you run it with terminal/cmd.
+- **test.groovy:** a simple one line program to print "Hello, Groovy!". You can use it to test it you have Groovy correctly installed in your machine by running the program on terminal. 
+- **README.md:** the file you are reading right now with lots of cool things about this project!
+- **AboutGroovy.md:** a brief introduction to Groovy and its uses (if you don't want to google it for yourself).
+-  **test_files:** an empty folder that you can use to place your test files inside.
+-  **Test Results and Logs.zip:** a zip folder with records of the 10 tests I ran to check if the program was working correctly. The tests were only ran using the UI version since if it runs through the UI it 100% runs just through terminal.
+-  **original_test_files.zip:** a zip folder with examples of the test files I used in case you want to use them for yourself (you can always make more by asking ChatGPT to generate some for you, or you can get creative and write them yourself!).
+-  **Tests.docx:** a word document I used to write down 10 tests to check my program was working correctly. This file only contains the list of what I did. To check the output of each test yourself, please check the files inside ``` Test Results and Logs.zip ```.
+
+
