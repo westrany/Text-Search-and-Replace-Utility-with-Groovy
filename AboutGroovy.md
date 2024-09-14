@@ -37,3 +37,21 @@ Groovy is an object-oriented programming language for the Java platform. It's kn
 - **Automation:** Thanks to its scripting nature, Groovy is useful for automation tasks.
   
 - **Testing:** Groovy is often used in test automation due to its concise syntax and ease of use.
+
+## Example of Groovy code  
+
+```groovy
+// Groovy code is concise and powerful
+def name = "World"
+println "Hello, ${name}!"
+
+// Groovy lists and closures
+def list = [1, 2, 3, 4, 5]
+list.each { println it }
+```
+
+This example shows Groovy's dynamic typing (```def```), string interpolation (```"${name}"```), and its support for closures (```{ println it }```), which simplifies iteration over lists.  
+
+## Groovy in the context of this project
+
+Groovy will help you to work more flexibly with file operations, string manipulation, and other tasks you need for the search-and-replace project, all while leveraging Java's ecosystem.
