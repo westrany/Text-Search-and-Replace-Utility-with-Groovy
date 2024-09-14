@@ -1,35 +1,55 @@
 # Text-Search-and-Replace-Utility-with-Groovy  
 
-## About this project  
+## Overview  
 
-### Notes about UI
+This project is a Groovy-based text search and replace utility that processes all text files in a given directory and its subdirectories. The program searches for a specific text or pattern and replaces it with a new string as specified by the user. Additionally, it offers options for logging, backup creation, and a simple user interface for ease of use.  
 
-We can definitely make a user interface (UI) that looks professional, cozy, and uses pastel cyan blue! Since you're working with Groovy, you can use Swing or JavaFX to create the UI. Both are widely used in Java and Groovy for desktop applications, and they can give a polished, user-friendly appearance.
+### Features  
 
-Steps to Tackle the UI:
-Decide on the Framework:
+1. **Search and Replace:**
+    - Takes a directory path, a search pattern, and a replacement string as input.
+    - Recursively processes all text files in the directory and its subdirectories, replacing all occurrences of the search pattern with the replacement string.
 
-Swing: It's simpler, and good for basic UIs. It's well-integrated with Groovy.
-JavaFX: Offers more modern, flexible UI components with better styling support using CSS.
-Since you want a professional and cozy feel, I’d recommend JavaFX for the ability to style the UI with CSS, including the pastel cyan blue theme.
+2. **Optional Logging:**
+    - Logs the details of files that were modified and supports saving these logs to a specified file. The log includes start time, errors (if any), end time, pattern found, and its location.
+  
+3. **File Backup:**
+  - Before modifying any file, the program creates a backup of the original file. This allows users to restore the original files if needed.
 
-UI Design Goals:
+4. **User Interface (UI):**
+    - A simple user interface allows users to specify the input arguments without using the command line. The UI takes the directory path, search text, replacement text, and an optional log file path as inputs.
+  
+## Requirements  
 
-Professional and Cozy: We can go for smooth rounded buttons, a clean layout, and a color scheme that includes pastel cyan blue with white or light grays for contrast.
-Input fields: For the directory path, search text, replacement text, and log file path, we'll need text fields, and for submitting the process, a button.
-JavaFX Sample Code: Here's a simple example of how you can create a UI in JavaFX. I'll include pastel cyan blue in the design.  
+**Groovy:** Ensure that Groovy is installed and properly set up in your environment.  
 
-Key Design Elements:
-Pastel cyan blue: The button uses a pastel cyan blue (#A0D9D9), and the background is a lighter cyan (#E0F7F7), giving it a soft, cozy vibe.
-Rounded corners and clean layout: You can add more styling with CSS if needed to enhance the cozy feeling with rounder edges.
-Fields and Button: The UI has input fields for all necessary arguments and a button to trigger the process.
-How to Run:
-Save the code in a .groovy file.
-Install JavaFX if needed by adding it as a dependency in your project.
-Run the Groovy script, and you should see a clean, professional UI where you can input all the values.
-Further Styling:
-If you want to explore more, you can use CSS with JavaFX to apply custom styles. For instance, you can create a CSS file to give more styling to buttons, labels, etc.
+You can find an instalation guide [here](https://groovy-lang.org/install.html).
 
-Would you like to customize this further or test it?
+## How to Use  
 
+### The Easy Way: Running with UI    
 
+1. Make a fork of this repository or simply download it.
+
+2. cd inside the repository and use the following command to launch the UI (this is assuming you are running this on terminal or cmd, command might differ if running on Linux):
+
+``` groovy TextReplacerUI``` 
+
+_Alternatively you can also type:_
+
+``` groovy TextReplacerUI.groovy ```
+
+3. The following UI window will pop up.
+
+![image](https://github.com/user-attachments/assets/71fa088f-5741-4a78-b031-fbaf49012e26)
+
+And here's how to fill the 4 fields that show up:
+    - **Directory Path:** the path to the directory containing the files you wish to run the program with. I recommend puting your files inside the empty ``` test_files ``` folder included in this repository and putting the path to it, or you can just give the program any directory within your machine.
+    - **Original Text:** write whatever text you want to search for.
+    - **New Text:** write whatever you want the ``` Original Text ``` to be replaced with. 
+    - **Optional Log File:** this very much optional field can be used if you want to create and save a log file for this specific run of the program. You can simply type what you wish to call said file (e.g.: ``` log_1.txt ```) or you can type the entire directory if you want it saved somewhere else other than the directory for this repository on your machine (e.g.: ``` C:\User\Documents\log_1.txt ```). **Just make sure to include a name for the file!** Otherwise you will be met with a very lovely error message... 
+
+### The Not-So-Easy Way: Running with Terminal/CMD
+
+_If you really must... Go for it!_ Just remember to firstly open ``` TextReplacerClass.groovy ```, scroll all the way down to line 96, and don't panic!
+1. 
