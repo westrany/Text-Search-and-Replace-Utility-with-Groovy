@@ -47,8 +47,9 @@ And here's how to fill the 4 fields that show up:
 - **Directory Path:** the path to the directory containing the files you wish to run the program with. I recommend puting your files inside the empty ``` test_files ``` folder included in this repository and putting the path to it, or you can just give the program any directory within your machine.  
 - **Original Text:** write whatever text you want to search for.  
 - **New Text:** write whatever you want the ``` Original Text ``` to be replaced with.     
-- **Optional Log File:** this very much optional field can be used if you want to create and save a log file for this specific run of the program. You can just type what you wish to call said file (e.g.: ``` log_1.txt ```).  
-        - Alternatively: you can type the entire directory if you want it saved somewhere else other than the directory for this repository on your machine (e.g.: ``` C:\User\Documents\log_1.txt ```). **Just make sure to include a name for the file!** Otherwise you will be met with a very lovely error message... 
+- **Optional Log File:** this very much optional field can be used if you want to create and save a log file for this specific run of the program. You can just type what you wish to call said file (e.g.: ``` log_1.txt ```).
+  
+    - Alternatively: you can type the entire directory if you want it saved somewhere else other than the directory for this repository on your machine (e.g.: ``` C:\User\Documents\log_1.txt ```). **Just make sure to include a name for the file!** Otherwise you will be met with a very lovely error message... 
 
 ### The Not-So-Easy Way: Running with Terminal/CMD
 
