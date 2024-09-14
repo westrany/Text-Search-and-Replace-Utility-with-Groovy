@@ -5,7 +5,7 @@
 
 import groovy.io.FileType
 
-class FileTextReplacer { // Changed class name
+class FileTextReplacer { // Changed class name to avoid conflict with filename
     String directoryPath
     String searchText
     String replaceText
@@ -20,7 +20,7 @@ class FileTextReplacer { // Changed class name
     }
 
     // Main function to start the search and replace process
-    void processFiles(){
+    void processFiles() {
         File dir = new File(directoryPath)
         if (!dir.exists()) {
             println "Directory does not exist. Please check path and try again."
@@ -28,52 +28,46 @@ class FileTextReplacer { // Changed class name
         }
 
         dir.eachFileRecurse(FileType.FILES) { File file ->
-            if (file.text.contains(searchText)) {
+            println "Found file: ${file.path}"
+            println "File content: ${file.text}"  // Debug to check file content
+
+            if (file.text.toLowerCase().contains(searchText.toLowerCase())) {
                 replaceTextInFile(file)
+            } else {
+                println "No matches found in file: ${file.path}"
             }
         }
     }
 
     // Function to replace text in a file
-    // with error handling and logging
     void replaceTextInFile(File file) {
         println "Processing file: ${file.path}"
 
         try {
-            // Read file contents line by line
             def content = file.text
             def lines = file.readLines()
             int occurrences = 0
             def locations = []
 
-            // Find occurrences of 'searchText' and respective line numbers
             lines.eachWithIndex { line, index -> 
-                if (line.contains(searchText)) {
+                if (line.toLowerCase().contains(searchText.toLowerCase())) {  // Case-insensitive match
                     occurrences += line.count(searchText)
                     locations << "Line ${index + 1}: ${line}"
                 }
             }
 
             if (occurrences > 0) {
-                // Replace all occurrences of 'searchText' with 'replaceText'
-                content = content.replaceAll(searchText, replaceText)
-
-                // Create backup of original file
+                content = content.replaceAll("(?i)" + searchText, replaceText)  // Case-insensitive replacement
                 createBackup(file)
-
-                // Write updated content to the file
                 file.text = content
 
-                // Log the number of replacements and where patterns were found
                 if (logFilePath) {
                     logModifiedFile(file.path, occurrences, locations)
                 }
             }
         } catch (Exception e) {
-            // Handle exceptions that occur while processing file
             println "Error processing file: ${file.path}. ${e.message}"
-
-            // Log error message if logging is enabled
+            e.printStackTrace()
             if (logFilePath) {
                 logModifiedFile(file.path, 0, [], true, e.message)
             }
@@ -88,17 +82,13 @@ class FileTextReplacer { // Changed class name
 
     // Function to log modified files and errors
     void logModifiedFile(String filePath, int replacements, List<String> locations, boolean isError = false, String errorMessage = "") {
-
-        // Define log file and get current time in readable format
         File logFile = new File(logFilePath)
         def currentTime = new Date().format("dd-MM-yyyy HH:mm:ss")
 
-        // If there was an error during file processing, log error message
         if (isError) {
             logFile << "[${currentTime}] ERROR: Failed to process file: ${filePath}. Reason: ${errorMessage}\n"
         } else {
-            // Log successful modifications with number of replacements
-            logFile << "[${currentTime}] SUCCESS: Modified file: ${filePath}. Replaced ${replacements} occurrence(s) of '${searchText}' at ${locations.join(", ")}\n"   
+            logFile << "[${currentTime}] SUCCESS: Modified file: ${filePath}. Replaced ${replacements} occurrence(s) of '${searchText}' at ${locations.join(", ")}\n"
         }
     }
 }
@@ -114,5 +104,8 @@ def searchText = args[1]
 def replaceText = args[2]
 def logFilePath = args.length > 3 ? args[3] : null
 
+println "Creating FileTextReplacer instance..."
 FileTextReplacer replacer = new FileTextReplacer(directoryPath, searchText, replaceText, logFilePath)
+println "Processing files..."
 replacer.processFiles()
+println "Program finished."
