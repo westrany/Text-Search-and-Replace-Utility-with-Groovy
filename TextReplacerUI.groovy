@@ -120,6 +120,13 @@ class TextReplacerUI {
                     return
                 }
 
+                //Check if the directory exists
+                File dir = new File(directory)
+                if (!dir.exists() || !dir.isDirectory()) {
+                    JOptionPane.showMessageDialog(frame, "Directory does not exist. Please check the path and try again.", "Error", JOptionPane.ERROR_MESSAGE)
+                    return
+                }
+
                 // Create TextReplacerClass instance and start processing
                 TextReplacerClass replacer = new TextReplacerClass(directory, originalText, newText, logFile)
                 replacer.processFiles()
