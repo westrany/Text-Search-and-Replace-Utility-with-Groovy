@@ -39,11 +39,19 @@ class TextReplacer {
         println "Processing file: ${file.path}"
 
         try {
-            // Read file content
+            // Read file contents line by line
             def content = file.text
+            def lines = file.readLines()
+            int occurences = 0
+            def locations = []
 
-            // Count number of occurrences of 'searchText' with 'replaceText'
-            int occurrences = content.count(searchText)
+            // Find occurrences of 'searchText' and respective line numbers
+            lines.eachWithIndex { line, index -> 
+                if (line.contains(searchText)) {
+                    occurences += line.count(searchText)
+                    locations << "Line ${index + 1}: ${line}"
+                }
+            }
 
             if (occurrences > 0) {
                 // Replace all occurrences of 'searchText' with 'replaceText'
@@ -55,9 +63,10 @@ class TextReplacer {
                 // Write updated content to file
                 file.text = content
 
-                // Log successful modification with number of replacements
+                // Log successful modification with number of  
+                // replacements and locations
                 if (logFilePath) {
-                    logModifiedFile(file.path, occurrences)
+                    logModifiedFile(file.path, occurrences, locations)
                 }
             }
         } catch (Exception e) {
