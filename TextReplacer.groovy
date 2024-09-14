@@ -60,11 +60,10 @@ class TextReplacer {
                 // Create backup of original file
                 createBackup(file)
 
-                // Write updated content to file
+                // Write updated content to the file
                 file.text = content
 
-                // Log successful modification with number of  
-                // replacements and locations
+                // Log the number of replacements and where patterns were found
                 if (logFilePath) {
                     logModifiedFile(file.path, occurrences, locations)
                 }
