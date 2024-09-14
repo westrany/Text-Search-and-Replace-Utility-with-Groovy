@@ -78,7 +78,15 @@ A brief explanation of what each of the 4 parameters do can be found in the desc
 
 ## Algorithm Choice  
 
-The search and replace operation leverages Groovy's powerful string manipulation and file handling capabilities. By reading each file as a text stream and processing it line by line, the program efficiently handles both small and large files. The use of recursion allows for easy navigation through subdirectories. This design ensures that the utility is lightweight, flexible, and scalable for various directory structures.
+The search and replace operation leverages Groovy's powerful string manipulation and file handling capabilities. By reading each file as a text stream and processing it line by line, the program efficiently handles both small and large files. The use of recursion allows for easy navigation through subdirectories. This design ensures that the utility is lightweight, flexible, and scalable for various directory structures.  
+
+## Logging and Error Handling  
+
+The program logs key details such as start time, end time, errors encountered, and where the pattern was found in the files.  
+
+In case of any errors, such as file access issues, the program catches and logs the error, ensuring it doesn't interrupt the entire search and replace process.  
+
+To check examples of how the program deals with logging, pleace check the respective tests descripbed in ``` Tests.docx ``` and saved in ``` Test Results and Logs.zip ```. 
 
 ## Project Structure  
 
@@ -92,5 +100,16 @@ The search and replace operation leverages Groovy's powerful string manipulation
 -  **Test Results and Logs.zip:** a zip folder with records of the 10 tests I ran to check if the program was working correctly. The tests were only ran using the UI version since if it runs through the UI it 100% runs just through terminal.
 -  **original_test_files.zip:** a zip folder with examples of the test files I used in case you want to use them for yourself (you can always make more by asking ChatGPT to generate some for you, or you can get creative and write them yourself!).
 -  **Tests.docx:** a word document I used to write down 10 tests to check my program was working correctly. This file only contains the list of what I did. To check the output of each test yourself, please check the files inside ``` Test Results and Logs.zip ```.
+
+## Development Time
+
+Estimated total time spent learning Groovy and developing this app:  
+    - Research: 3 hours
+    - Coding: 6 hours
+    - Testing and Debugging: 3 hours  
+
+## License  
+
+This project is free to use and modify under the MIT license. 
 
 
