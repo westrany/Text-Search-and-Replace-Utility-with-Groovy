@@ -34,19 +34,40 @@ class TextReplacer {
     }
 
     // Function to replace text in a file
+    // with error handling and logging
     void replaceTextInFile(File file) {
         println "Processing file: ${file.path}"
-        def content = file.text.replaceAll(searchText, replaceText)
 
-        // Create backup
-        createBackup(file)
+        try {
+            // Read file content
+            def content = file.text
 
-        // Write updated content to file
-        file.text = content
+            // Count number of occurrences of 'searchText' with 'replaceText'
+            int occurrences = content.count(searchText)
 
-        // Log if necessary
-        if (logFilePath) {
-            logModifiedFile(file.path)
+            if (occurrences > 0) {
+                // Replace all occurrences of 'searchText' with 'replaceText'
+                content = content.replaceAll(searchText, replaceText)
+
+                // Create backup of original file
+                createBackup(file)
+
+                // Write updated content to file
+                file.text = content
+
+                // Log successful modification with number of replacements
+                if (logFilePath) {
+                    logModifiedFile(file.path, occurrences)
+                }
+            }
+        } catch (Exception e) {
+            // Handle exceptions that occur while processing file
+            println "Error processing file: ${file.path}. ${e.message}"
+
+            // Log error message if logging is enabled
+            if (logFilePath) {
+                logModifiedFile(file.path, 0, true, e.message)
+            }
         }
     }
 
@@ -56,7 +77,7 @@ class TextReplacer {
         backup.text = file.text
     }
 
-    // Function to log modified files
+    // Function to log modified files and errors
     void logModifiedFile(String filePath, int replacements, boolean isError = false, String errorMessage = "") {
         // Define log file and get current time in readable format
         File logFile = new File(logFilePath)
