@@ -1,4 +1,6 @@
-# Text-Search-and-Replace-Utility-with-Groovy  
+# Text Search and Replace Utility with Groovy
+
+![image](https://github.com/user-attachments/assets/84314320-0206-4117-bb3d-45f5098f90dd)
 
 ## Index  
 
@@ -125,6 +127,6 @@ Estimated total time spent learning Groovy and developing this app:
 
 ## License  
 
-This project is free to use and modify under the MIT license. 
+This project is free to use and modify under [this MIT license](https://github.com/westrany/Text-Search-and-Replace-Utility-with-Groovy/blob/main/LICENSE). 
 
 
