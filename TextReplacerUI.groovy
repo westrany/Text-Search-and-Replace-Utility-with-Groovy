@@ -16,51 +16,64 @@ class TextReplacerUI {
 
         // Create the main frame
         JFrame frame = new JFrame("Text Replacer")
-        frame.setSize(500, 400)  // Keep the frame size
+        frame.setSize(500, 300)  // Adjust frame size
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
-        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS))
+        frame.setLayout(new GridBagLayout())  // Using GridBagLayout for label-input alignment
+        GridBagConstraints gbc = new GridBagConstraints()
+        gbc.insets = new Insets(10, 10, 10, 10)
+        gbc.fill = GridBagConstraints.HORIZONTAL
 
         // Create and add components
         JLabel dirLabel = new JLabel("Directory Path:")
-        JTextField dirField = new JTextField(30)
-        dirField.setMaximumSize(new Dimension(400, 30))  // Set larger size for the text field
+        JTextField dirField = new JTextField(20)  // 20 column width for input fields
+        dirField.setPreferredSize(new Dimension(250, 30))
 
         JLabel originalTextLabel = new JLabel("Original Text:")
-        JTextField originalTextField = new JTextField(30)
-        originalTextField.setMaximumSize(new Dimension(400, 30))  // Set larger size for the text field
+        JTextField originalTextField = new JTextField(20)
+        originalTextField.setPreferredSize(new Dimension(250, 30))
 
         JLabel newTextLabel = new JLabel("New Text:")
-        JTextField newTextField = new JTextField(30)
-        newTextField.setMaximumSize(new Dimension(400, 30))  // Set larger size for the text field
+        JTextField newTextField = new JTextField(20)
+        newTextField.setPreferredSize(new Dimension(250, 30))
 
         JLabel logFileLabel = new JLabel("Log File Path (Optional):")
-        JTextField logFileField = new JTextField(30)
-        logFileField.setMaximumSize(new Dimension(400, 30))  // Set larger size for the text field
+        JTextField logFileField = new JTextField(20)
+        logFileField.setPreferredSize(new Dimension(250, 30))
 
+        // Add labels and fields in pairs
+        gbc.gridx = 0
+        gbc.gridy = 0
+        frame.add(dirLabel, gbc)
+        gbc.gridx = 1
+        frame.add(dirField, gbc)
+
+        gbc.gridx = 0
+        gbc.gridy = 1
+        frame.add(originalTextLabel, gbc)
+        gbc.gridx = 1
+        frame.add(originalTextField, gbc)
+
+        gbc.gridx = 0
+        gbc.gridy = 2
+        frame.add(newTextLabel, gbc)
+        gbc.gridx = 1
+        frame.add(newTextField, gbc)
+
+        gbc.gridx = 0
+        gbc.gridy = 3
+        frame.add(logFileLabel, gbc)
+        gbc.gridx = 1
+        frame.add(logFileField, gbc)
+
+        // Fix the button size
         JButton runButton = new JButton("Run")
-        runButton.setPreferredSize(new Dimension(150, 40))  // Make the button larger
-        runButton.setAlignmentX(Component.CENTER_ALIGNMENT)  // Center the button
-
-        // Centering everything vertically with glue
-        frame.add(Box.createVerticalGlue())  // Top space
-        frame.add(dirLabel)
-        dirLabel.setAlignmentX(Component.CENTER_ALIGNMENT)  // Center the label
-        frame.add(dirField)
-        frame.add(Box.createVerticalStrut(10))  // Add space between components
-        frame.add(originalTextLabel)
-        originalTextLabel.setAlignmentX(Component.CENTER_ALIGNMENT)  // Center the label
-        frame.add(originalTextField)
-        frame.add(Box.createVerticalStrut(10))
-        frame.add(newTextLabel)
-        newTextLabel.setAlignmentX(Component.CENTER_ALIGNMENT)  // Center the label
-        frame.add(newTextField)
-        frame.add(Box.createVerticalStrut(10))
-        frame.add(logFileLabel)
-        logFileLabel.setAlignmentX(Component.CENTER_ALIGNMENT)  // Center the label
-        frame.add(logFileField)
-        frame.add(Box.createVerticalStrut(20))  // Larger space before the button
-        frame.add(runButton)
-        frame.add(Box.createVerticalGlue())  // Bottom space
+        gbc.gridx = 0
+        gbc.gridy = 4
+        gbc.gridwidth = 2
+        gbc.fill = GridBagConstraints.NONE  // Disable horizontal fill for button
+        gbc.anchor = GridBagConstraints.CENTER  // Center the button
+        runButton.setPreferredSize(new Dimension(120, 40))  // Set button size (keep height at 40)
+        frame.add(runButton, gbc)
 
         // Action listener for the button
         runButton.addActionListener(new ActionListener() {
@@ -89,6 +102,3 @@ class TextReplacerUI {
         frame.setVisible(true)
     }
 }
-
-
-
