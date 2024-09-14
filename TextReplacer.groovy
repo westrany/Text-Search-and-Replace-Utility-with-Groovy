@@ -105,21 +105,4 @@ class TextReplacer {
 
 
 
-// Main block to run the program
-if (args.length < 3) {
-    println "Usage: groovy TextReplacer.groovy <directoryPath> <searchText> <replaceText> [<logFilePath>]"
-    System.exit(1)
-}
-
-String directoryPath = args[0]
-String searchText = args[1]
-String replaceText = args[2]
-String logFilePath = args.length > 3 ? args[3] : null
-
-TextReplacer replacer = new TextReplacer(directoryPath, searchText, replaceText, logFilePath)
-replacer.processFiles()
-
-
-
-
 
