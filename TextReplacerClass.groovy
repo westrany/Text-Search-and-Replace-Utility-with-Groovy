@@ -12,7 +12,7 @@ class TextReplacerClass { // Changed class name to avoid conflict with filename
     String logFilePath
 
     // Constructor
-    TextReplacer(String directoryPath, String searchText, String replaceText, String logFilePath = null) {
+    TextReplacerClass(String directoryPath, String searchText, String replaceText, String logFilePath = null) {
         this.directoryPath = directoryPath
         this.searchText = searchText
         this.replaceText = replaceText
