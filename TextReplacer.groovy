@@ -42,13 +42,13 @@ class TextReplacer {
             // Read file contents line by line
             def content = file.text
             def lines = file.readLines()
-            int occurences = 0
+            int occurrences = 0
             def locations = []
 
             // Find occurrences of 'searchText' and respective line numbers
             lines.eachWithIndex { line, index -> 
                 if (line.contains(searchText)) {
-                    occurences += line.count(searchText)
+                    occurrences += line.count(searchText)
                     locations << "Line ${index + 1}: ${line}"
                 }
             }
@@ -97,7 +97,7 @@ class TextReplacer {
             logFile << "[${currentTime}] ERROR: Failed to process file: ${filePath}. Reason: ${errorMessage}\n"
         } else {
             //Log successful modifications with number of replacements
-            logFile << "[${currentTime}] SUCCESS: Modified file: ${filePath}. Replace ${replacements} occurrence(s) of '${searchText}'\n"   
+            logFile << "[${currentTime}] SUCCESS: Modified file: ${filePath}. Replaced ${replacements} occurrence(s) of '${searchText}'\n"   
         }
     }
 }
@@ -114,7 +114,7 @@ if (args.length < 3) {
 String directoryPath = args[0]
 String searchText = args[1]
 String replaceText = args[2]
-String logFilePath = args.lenght > 3 ? args[3] : null
+String logFilePath = args.length > 3 ? args[3] : null
 
 TextReplacer replacer = new TextReplacer(directoryPath, searchText, replaceText, logFilePath)
 replacer.processFiles()
