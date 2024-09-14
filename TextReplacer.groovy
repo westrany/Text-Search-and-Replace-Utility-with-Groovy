@@ -87,12 +87,8 @@ class TextReplacer {
     }
 
     // Function to log modified files and errors
-<<<<<<< HEAD
     void logModifiedFile(String filePath, int replacements, List<String> locations, boolean isError = false, String errorMessage = "") {
 
-=======
-    void logModifiedFile(String filePath, int replacements, boolean isError = false, String errorMessage = "") {
->>>>>>> parent of 64da4a1 (Re-added main method for command-line execution)
         // Define log file and get current time in readable format
         File logFile = new File(logFilePath)
         def currentTime = new Date().format("dd-MM-yyyy HH:mm:ss")
@@ -102,11 +98,7 @@ class TextReplacer {
             logFile << "[${currentTime}] ERROR: Failed to process file: ${filePath}. Reason: ${errorMessage}\n"
         } else {
             //Log successful modifications with number of replacements
-<<<<<<< HEAD
             logFile << "[${currentTime}] SUCCESS: Modified file: ${filePath}. Replaced ${replacements} occurrence(s) of '${searchText}' at ${locations.join(", ")}\n"   
-=======
-            logFile << "[${currentTime}] SUCCESS: Modified file: ${filePath}. Replaced ${replacements} occurrence(s) of '${searchText}'\n"   
->>>>>>> parent of 64da4a1 (Re-added main method for command-line execution)
         }
     }
 }
