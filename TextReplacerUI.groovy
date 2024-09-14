@@ -1,4 +1,3 @@
-@Grab('org.openjfx:javafx-controls:11')
 import javafx.application.Application
 import javafx.scene.Scene
 import javafx.scene.control.Button
@@ -6,8 +5,6 @@ import javafx.scene.control.Label
 import javafx.scene.control.TextField
 import javafx.scene.layout.VBox
 import javafx.stage.Stage
-import javafx.scene.paint.Color
-import javafx.scene.layout.HBox
 import javafx.geometry.Insets
 
 class TextReplacerUI extends Application {
@@ -18,7 +15,7 @@ class TextReplacerUI extends Application {
         Label directoryLabel = new Label("Directory Path:")
         TextField directoryInput = new TextField()
 
-        Label searchText = new Label("Search Text:")
+        Label searchTextLabel = new Label("Search Text:")
         TextField searchTextInput = new TextField()
 
         Label replaceTextLabel = new Label("Replace Text:")
@@ -32,13 +29,13 @@ class TextReplacerUI extends Application {
         processButton.setStyle("-fx-background-color: #A0D9D9; -fx-text-fill: #333333; -fx-font-weight:bold;")
 
         // Action for Start Process button
-        processButton.setOnAction{
+        processButton.setOnAction {
             // Print input to console (logic integrated later)
             println "Directory: " + directoryInput.getText()
             println "Search Text: " + searchTextInput.getText()
             println "Replacement Text: " + replaceTextInput.getText()
             println "Log File Path: " + logFileInput.getText()
-            // Call TextReplacer logic with gathered inputs
+            // Here, you would call your TextReplacer logic with the gathered inputs
         }
 
         // Create layout and add elements
