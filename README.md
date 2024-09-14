@@ -104,9 +104,9 @@ To check examples of how the program deals with logging, pleace check the respec
 ## Development Time
 
 Estimated total time spent learning Groovy and developing this app:  
-    - Research: 3 hours
-    - Coding: 6 hours
-    - Testing and Debugging: 3 hours  
+    - Research: 3 hours  
+    - Coding: 6 hours  
+    - Testing and Debugging: 3 hours     
 
 ## License  
 
