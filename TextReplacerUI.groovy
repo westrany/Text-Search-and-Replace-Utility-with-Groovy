@@ -127,6 +127,17 @@ class TextReplacerUI {
                     return
                 }
 
+                //Check if log file path is valid (if provided)
+                if (|logFile.isEmpty()) {
+                    File logFileObj = new File(logFile)
+                    File logDir = logFileObj.getParentFile()
+
+                    if (logDir != null && (!logDir.exists() || !logDir.isDirectory())) {
+                        JOptionPane.showMessageDialog(frame, "Log File Path is invalid. Please check the path and try again.", "Error", JOptionPane.ERROR_MESSAGE)
+                        return
+                    }
+                }
+
                 // Create TextReplacerClass instance and start processing
                 TextReplacerClass replacer = new TextReplacerClass(directory, originalText, newText, logFile)
                 replacer.processFiles()
