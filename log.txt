@@ -1,3 +1,0 @@
-[15-09-2024 00:48:19] SUCCESS: Modified file: test_files\file1.txt. Replaced 2 occurrence(s) of 'word' at Line 1: This is a simple test file. Let's replace some word., Line 2: Here's more word to test.
-[15-09-2024 00:48:19] SUCCESS: Modified file: test_files\file2.txt. Replaced 2 occurrence(s) of 'word' at Line 1: Another file with some word to replace. Let's see how it works., Line 2: More lines of word here.
-[15-09-2024 00:48:19] SUCCESS: Modified file: test_files\file3.txt. Replaced 1 occurrence(s) of 'word' at Line 1: This file doesn't have much word, but it still needs replacement.
