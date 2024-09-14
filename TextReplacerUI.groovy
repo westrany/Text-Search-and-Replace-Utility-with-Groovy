@@ -1,9 +1,9 @@
 // Groovy class to create a simple UI
-// for TextReplacer
+// for TextReplacerClass
 // .......................................
 // Author: Maria Fitas
 
-import TextReplacer
+import TextReplacerClass
 
 import javax.swing.*
 import java.awt.*
@@ -92,8 +92,8 @@ class TextReplacerUI {
                     return
                 }
 
-                // Create TextReplacer instance and start processing
-                TextReplacer replacer = new TextReplacer(directory, originalText, newText, logFile)
+                // Create TextReplacerClass instance and start processing
+                TextReplacerClass replacer = new TextReplacerClass(directory, originalText, newText, logFile)
                 replacer.processFiles()
                 
                 JOptionPane.showMessageDialog(frame, "Text replacement completed.", "Success", JOptionPane.INFORMATION_MESSAGE)
