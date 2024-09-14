@@ -38,7 +38,7 @@ class TextReplacerUI {
         JTextField newTextField = new JTextField(20)
         newTextField.setPreferredSize(new Dimension(250, 30))
 
-        JLabel logFileLabel = new JLabel("Log File Path (Optional):")
+        JLabel logFileLabel = new JLabel("Log File Path (Optional, include filename e.g., log.txt):")
         JTextField logFileField = new JTextField(20)
         logFileField.setPreferredSize(new Dimension(250, 30))
 
