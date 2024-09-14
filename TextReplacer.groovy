@@ -1,5 +1,6 @@
 // Groovy class to search and replace text 
 // within all files in a given directory
+// .......................................
 // Author: Maria Fitas
 
 import groovy.io.FileType
