@@ -58,7 +58,7 @@ class TextReplacerUI {
         newTextField.setPreferredSize(new Dimension(250, 30))
         
         // Log File Path with smaller text
-        JLabel logFileLabel = new JLabel("<html>Optional Log File<br><font size='2'>(Name e.g.: log.txt)</font></html>")
+        JLabel logFileLabel = new JLabel("<html>Log File Name<br><font size='2'>(Optional, e.g. log.txt)</font></html>")
         logFileLabel.setFont(labelFont)
         JTextField logFileField = new JTextField(20)
         logFileField.setPreferredSize(new Dimension(250, 30))
