@@ -106,7 +106,7 @@ class TextReplacerUI {
         frame.add(runButton, gbc)
 
         // Action listener for the button
-        runButton.addActionListener(new ActionListener() {
+        runButton.addActionListener({ e ->
             @Override
             void actionPerformed(ActionEvent e) {
                 String directory = dirField.getText()
