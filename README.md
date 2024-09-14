@@ -49,9 +49,19 @@ And here's how to fill the 4 fields that show up:
 - **New Text:** write whatever you want the ``` Original Text ``` to be replaced with.     
 - **Optional Log File:** this very much optional field can be used if you want to create and save a log file for this specific run of the program. You can just type what you wish to call said file (e.g.: ``` log_1.txt ```).
   
-    - Alternatively: you can type the entire directory if you want it saved somewhere else other than the directory for this repository on your machine (e.g.: ``` C:\User\Documents\log_1.txt ```). **Just make sure to include a name for the file!** Otherwise you will be met with a very lovely error message... 
+    - Alternatively: you can type the entire directory if you want it saved somewhere else other than the directory for this repository on your machine (e.g.: ``` C:\User\Documents\log_1.txt ```). **Just make sure to include a name for the file!** Otherwise you will be met with a very lovely error message...
+    - Whatever you don't, **don't place the files you want the program to make changes to on the main directory of this repository!** Otherwise the program will change everything that is not inside a zip file - yes, including other code files. And this will mess up a bunch of things and give you a headache, so just take my word for it and put those files on another folder (I left you a pretty empty folder ``` test_files ``` specifically for that) or to another folder somewhere in your machine.
 
 ### The Not-So-Easy Way: Running with Terminal/CMD
 
-_If you really must... Go for it!_ Just remember to firstly open ``` TextReplacerClass.groovy ```, scroll all the way down to line 96, and don't panic!
-1. 
+To do this, you need to use a copy of TextReplacerClass that contains a main block to run the class using command-line arguments. _I initially had this main block commented out on ``` TextReplacerClass.groovy ``` but decided to make a copy of the file with it specifically for terminal use for conveniency of the user. The code is exactly the same in these two, the only difference is the main block added on lines 96 to 112 of ``` TERMINAL_TextReplacerClass.groovy ```._  
+
+1. Open your terminal/cmd in the main folder of this repository (in my case that would be ``` C:\Users\maria\Documents\GitHub\Text-Search-and-Replace-Utility-with-Groovy ```).
+
+2. Type the following command changing the necessary sections to fit your local path and what you want the program to do:  
+
+``` groovy TERMINAL_TextReplacerClass.groovy \path\to\directory "Original Text" "New Text" "\path\to\logfile.txt" ```
+
+A brief explanation of what each of the 4 parameters do can be found in the description of [The Easy Way: Running with UI](#the-easy-way-running-with-ui). **I strongly recommend you reaad it.**
+
+
