@@ -1,3 +1,4 @@
+
 // Groovy class to create a simple UI
 // for TextReplacerClass
 // .......................................
@@ -26,8 +27,10 @@ class TextReplacerUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
         frame.setLayout(new GridBagLayout())  // Using GridBagLayout for label-input alignment
         GridBagConstraints gbc = new GridBagConstraints()
-        gbc.insets = new Insets(10, 10, 10, 10)
+        gbc.insets = new Insets(5, 5, 5, 5)  // Reduced padding around components
         gbc.fill = GridBagConstraints.HORIZONTAL
+        gbc.ipadx = 5  // Internal padding in X direction
+        gbc.ipady = 5  // Internal padding in Y direction
         
         // Set a light background color for the entire frame
         frame.getContentPane().setBackground(new Color(230, 240, 255))
@@ -55,7 +58,7 @@ class TextReplacerUI {
         newTextField.setPreferredSize(new Dimension(250, 30))
         
         // Log File Path with smaller text
-        JLabel logFileLabel = new JLabel("<html>Log File Path<br><font size='2'>(Optional, include filename e.g., log.txt)</font></html>")
+        JLabel logFileLabel = new JLabel("<html>Log File Name<br><font size='2'>(Optional, e.g. log.txt)</font></html>")
         logFileLabel.setFont(labelFont)
         JTextField logFileField = new JTextField(20)
         logFileField.setPreferredSize(new Dimension(250, 30))
@@ -63,6 +66,7 @@ class TextReplacerUI {
         // Add labels and fields in pairs
         gbc.gridx = 0
         gbc.gridy = 0
+        gbc.anchor = GridBagConstraints.WEST
         frame.add(dirLabel, gbc)
         gbc.gridx = 1
         frame.add(dirField, gbc)
@@ -81,28 +85,26 @@ class TextReplacerUI {
         
         gbc.gridx = 0
         gbc.gridy = 3
-        gbc.anchor = GridBagConstraints.WEST
         frame.add(logFileLabel, gbc)
         
         gbc.gridx = 1
         gbc.gridy = 3
-        gbc.anchor = GridBagConstraints.EAST
         frame.add(logFileField, gbc)
         
-        // Fix the button size
+        // Create the Run button first, then add it to the frame
         JButton runButton = new JButton("Run")
         runButton.setFont(new Font("SansSerif", Font.BOLD, 14))
         runButton.setBackground(new Color(100, 150, 255))  // Blue background for button
         runButton.setForeground(Color.WHITE)  // White text for button
         runButton.setPreferredSize(new Dimension(120, 40))  // Set button size
-        
+
         gbc.gridx = 0
         gbc.gridy = 4
         gbc.gridwidth = 2
-        gbc.anchor = GridBagConstraints.CENTER  // Center the button
+        gbc.anchor = GridBagConstraints.CENTER
         gbc.fill = GridBagConstraints.NONE
         frame.add(runButton, gbc)
-        
+
         // Action listener for the button
         runButton.addActionListener(new ActionListener() {
             @Override
