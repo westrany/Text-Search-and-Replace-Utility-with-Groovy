@@ -62,6 +62,35 @@ To do this, you need to use a copy of TextReplacerClass that contains a main blo
 
 ``` groovy TERMINAL_TextReplacerClass.groovy \path\to\directory "Original Text" "New Text" "\path\to\logfile.txt" ```
 
-A brief explanation of what each of the 4 parameters do can be found in the description of [The Easy Way: Running with UI](#the-easy-way-running-with-ui). **I strongly recommend you reaad it.**
+A brief explanation of what each of the 4 parameters do can be found in the description of [The Easy Way: Running with UI](#the-easy-way-running-with-ui). **I strongly recommend you reaad it.**   
+
+## Program Flow  
+
+1. The program receives the directory path, search text, and replacement text as input.
+
+2. It recursively traverses the directory and subdirectories, looking for text files.
+
+3. For each file, it searches for the specified text/pattern.
+
+4. If found, the program replaces the text and creates a backup of the original file.
+
+5. The log file (if provided) records details of all modified files.
+
+## Algorithm Choice  
+
+The search and replace operation leverages Groovy's powerful string manipulation and file handling capabilities. By reading each file as a text stream and processing it line by line, the program efficiently handles both small and large files. The use of recursion allows for easy navigation through subdirectories. This design ensures that the utility is lightweight, flexible, and scalable for various directory structures.
+
+## Project Structure  
+
+- **TextReplacerClass.groovy:** core logic for search, replace, and logging
+- **TextRepalcerUI.groovy:** simple user interface to run the utility
+- **TERMINAL_TextReplacerClass:** modified TextReplacerClass.groovy with a main block that lets you run it with terminal/cmd.
+- **test.groovy:** a simple one line program to print "Hello, Groovy!". You can use it to test it you have Groovy correctly installed in your machine by running the program on terminal. 
+- **README.md:** the file you are reading right now with lots of cool things about this project!
+- **AboutGroovy.md:** a brief introduction to Groovy and its uses (if you don't want to google it for yourself).
+-  **test_files:** an empty folder that you can use to place your test files inside.
+-  **Test Results and Logs.zip:** a zip folder with records of the 10 tests I ran to check if the program was working correctly. The tests were only ran using the UI version since if it runs through the UI it 100% runs just through terminal.
+-  **original_test_files.zip:** a zip folder with examples of the test files I used in case you want to use them for yourself (you can always make more by asking ChatGPT to generate some for you, or you can get creative and write them yourself!).
+-  **Tests.docx:** a word document I used to write down 10 tests to check my program was working correctly. This file only contains the list of what I did. To check the output of each test yourself, please check the files inside ``` Test Results and Logs.zip ```.
 
 
