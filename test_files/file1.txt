@@ -1,2 +1,2 @@
-This is a simple test file. Let's replace some word.
-Here's more word to test.
+This is a simple test file. Let's replace some text.
+Here's more text to test.
