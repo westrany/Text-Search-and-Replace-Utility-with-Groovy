@@ -5,14 +5,14 @@
 
 import groovy.io.FileType
 
-class TextReplacer {
+class FileTextReplacer { // Changed class name
     String directoryPath
     String searchText
     String replaceText
     String logFilePath
 
     // Constructor
-    TextReplacer(String directoryPath, String searchText, String replaceText, String logFilePath = null) {
+    FileTextReplacer(String directoryPath, String searchText, String replaceText, String logFilePath = null) {
         this.directoryPath = directoryPath
         this.searchText = searchText
         this.replaceText = replaceText
@@ -25,11 +25,11 @@ class TextReplacer {
         if (!dir.exists()) {
             println "Directory does not exist. Please check path and try again."
             return
-    }
+        }
 
         dir.eachFileRecurse(FileType.FILES) { File file ->
             if (file.text.contains(searchText)) {
-            replaceTextInFile(file)
+                replaceTextInFile(file)
             }
         }
     }
@@ -97,13 +97,22 @@ class TextReplacer {
         if (isError) {
             logFile << "[${currentTime}] ERROR: Failed to process file: ${filePath}. Reason: ${errorMessage}\n"
         } else {
-            //Log successful modifications with number of replacements
+            // Log successful modifications with number of replacements
             logFile << "[${currentTime}] SUCCESS: Modified file: ${filePath}. Replaced ${replacements} occurrence(s) of '${searchText}' at ${locations.join(", ")}\n"   
         }
     }
 }
 
+// Main block to run the class using command-line arguments
+if (args.length < 3) {
+    println "Usage: groovy TextReplacer.groovy <directoryPath> <searchText> <replaceText> [<logFilePath>]"
+    System.exit(1)
+}
 
+def directoryPath = args[0]
+def searchText = args[1]
+def replaceText = args[2]
+def logFilePath = args.length > 3 ? args[3] : null
 
-
-
+FileTextReplacer replacer = new FileTextReplacer(directoryPath, searchText, replaceText, logFilePath)
+replacer.processFiles()
