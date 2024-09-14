@@ -5,7 +5,7 @@
 
 import groovy.io.FileType
 
-class FileTextReplacer { // Changed class name to avoid conflict with filename
+class TextReplacer { // Changed class name to avoid conflict with filename
     String directoryPath
     String searchText
     String replaceText
