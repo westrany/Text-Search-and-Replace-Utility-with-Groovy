@@ -72,16 +72,20 @@ class TextReplacer {
         backup.text = file.text
     }
 
-    void logModifiedFile(String filePath, int replacements, boolean isError = false, String errorMessage = "") {
-        File logFile = new File(logFilePath)
-        def currentTime = new Date().format("dd-MM-yyyy HH:mm:ss")
+// Function to log modified files and errors
+void logModifiedFile(String filePath, int replacements, List<String> locations, boolean isError = false, String errorMessage = "") {
+    // Define log file and get current time in readable format
+    File logFile = new File(logFilePath)
+    def currentTime = new Date().format("dd-MM-yyyy HH:mm:ss")
 
-        if (isError) {
-            logFile << "[${currentTime}] ERROR: Failed to process file: ${filePath}. Reason: ${errorMessage}\n"
-        } else {
-            logFile << "[${currentTime}] SUCCESS: Modified file: ${filePath}. Replaced ${replacements} occurrence(s) of '${searchText}'\n"
-        }
+    // If there was an error during file processing, log error message
+    if (isError) {
+        logFile << "[${currentTime}] ERROR: Failed to process file: ${filePath}. Reason: ${errorMessage}\n"
+    } else {
+        //Log successful modifications with number of replacements
+        logFile << "[${currentTime}] SUCCESS: Modified file: ${filePath}. Replaced ${replacements} occurrence(s) of '${searchText}' at ${locations.join(", ")}\n"   
     }
+}
 
     // Add a main method for command-line execution
     static void main(String[] args) {
