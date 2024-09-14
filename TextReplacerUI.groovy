@@ -58,6 +58,6 @@ class TextReplacerUI extends Application {
     }
 
     static void main(String[] args) {
-        lauch(args)
+        launch(args)
     }
 }
